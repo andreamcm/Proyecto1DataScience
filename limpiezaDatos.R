@@ -80,3 +80,22 @@ no_dup$TELEFONO[nchar(as.character(no_dup$TELEFONO))>8 & !is.na(no_dup$TELEFONO)
 #Status -> abierta = 1, temporalmente cerrado = 0    
 no_dup$STATUS <- gsub("ABIERTA", 1, no_dup$STATUS)
 no_dup$STATUS <- gsub("CERRADA TEMPORALMENTE", 0, no_dup$STATUS)
+
+
+# Estandar para todas las categorias con datos ""
+prueba <- no_dup
+prueba$DISTRITO[prueba$DISTRITO==""] <- NA
+prueba$DIRECCION[prueba$DIRECCION==""] <- NA
+prueba$DIRECTOR[prueba$DIRECTOR==""] <- NA
+prueba$DIRECTOR[prueba$DIRECTOR=="---"] <- NA
+prueba$DIRECTOR[prueba$DIRECTOR=="--"] <- NA
+prueba$DIRECTOR[prueba$DIRECTOR=="---+"] <- NA
+
+# AUN NO IMPLEMENTADO, LO TERMINARE MAÑANA
+if(grepl("-", prueba$DIRECTOR)){
+  prueba$DIRECTOR <- NA
+
+}
+grep("-", prueba$DIRECTOR, value = TRUE)
+
+
