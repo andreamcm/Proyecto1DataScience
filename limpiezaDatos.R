@@ -65,4 +65,8 @@ options(max.print= 1000000000)
 unique(todosDepartamentos)
 
 duplicated(todosDepartamentos)
-x <-todosDepartamentos %>% distinct()
+no_dup <-todosDepartamentos %>% distinct()
+names(no_dup) <- as.matrix(no_dup[1, ])
+no_dup <- no_dup[-1, ]
+no_dup[] <- lapply(no_dup, function(x) type.convert(as.character(x)))
+no_dup
