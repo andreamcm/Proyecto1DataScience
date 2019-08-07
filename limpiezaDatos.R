@@ -84,18 +84,107 @@ no_dup$STATUS <- gsub("CERRADA TEMPORALMENTE", 0, no_dup$STATUS)
 
 # Estandar para todas las categorias con datos ""
 prueba <- no_dup
-prueba$DISTRITO[prueba$DISTRITO==""] <- NA
-prueba$DIRECCION[prueba$DIRECCION==""] <- NA
-prueba$DIRECTOR[prueba$DIRECTOR==""] <- NA
-prueba$DIRECTOR[prueba$DIRECTOR=="---"] <- NA
-prueba$DIRECTOR[prueba$DIRECTOR=="--"] <- NA
-prueba$DIRECTOR[prueba$DIRECTOR=="---+"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO==""] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION==""] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR==""] <- NA
+# Todo lo del DIRECTOR (es un montón)
+no_dup$DIRECTOR[no_dup$DIRECTOR==""] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="0"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="---"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="--"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-----"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="----"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="----------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-----------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-----------------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="---------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="--------------------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="--------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-------------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="--------------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="---------------------"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR=="-----------------------------"] <- NA
 
-# AUN NO IMPLEMENTADO, LO TERMINARE MAÑANA
-if(grepl("-", prueba$DIRECTOR)){
-  prueba$DIRECTOR <- NA
+# Con este código se puede verificar si existen más datos raros dentro de las variables
+summary(no_dup$STATUS)
+grep("DIARIO", no_dup$PLAN, value = TRUE)
 
-}
-grep("-", prueba$DIRECTOR, value = TRUE)
+# Nueva columna para numero de departamento
+temp
+no_dup$CODIGO_DEPARTAMENTO <- 0
+# No sé si se tiene que correr antes, pero mejor hacerlo para que funcione bien
+no_dup$CODIGO_DEPARTAMENTO <- gsub("ALTA VERAPAZ", 1, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("BAJA VERAPAZ", 2, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("CHIMALTENANGO", 3, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("CHIQUIMULA", 4, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("CIUDAD CAPITAL", 5, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("EL PROGRESO", 6, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("ESCUINTLA", 7, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("GUATEMALA", 8, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("HUEHUETENANGO", 9, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("IZABAL", 10, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("JALAPA", 11, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("JUTIAPA", 12, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("PETEN", 13, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("QUETZALTENANGO", 14, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("QUICHE", 15, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("RETALULEU", 16, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SACATEPEQUEZ", 17, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SAN MARCOS", 18, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SANTA ROSA", 19, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SOLOLA", 20, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SUCHITEPEQUEZ", 21, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("TOTONICAPAN", 22, no_dup$DEPARTAMENTO)
+no_dup$CODIGO_DEPARTAMENTO <- gsub("ZACAPA", 23, no_dup$DEPARTAMENTO)
 
-
+# Esto es lo que cambia el codigo
+# Alta Verapaz = 1
+no_dup$CODIGO_DEPARTAMENTO <- gsub("ALTA VERAPAZ", 1, no_dup$CODIGO_DEPARTAMENTO)
+# Baja Verapaz = 2
+no_dup$CODIGO_DEPARTAMENTO <- gsub("BAJA VERAPAZ", 2, no_dup$CODIGO_DEPARTAMENTO)
+# Chimaltenango = 3
+no_dup$CODIGO_DEPARTAMENTO <- gsub("CHIMALTENANGO", 3, no_dup$CODIGO_DEPARTAMENTO)
+# Chiquimula = 4
+no_dup$CODIGO_DEPARTAMENTO <- gsub("CHIQUIMULA", 4, no_dup$CODIGO_DEPARTAMENTO)
+# Ciudad Capital = 5
+no_dup$CODIGO_DEPARTAMENTO <- gsub("CIUDAD CAPITAL", 5, no_dup$CODIGO_DEPARTAMENTO)
+# El Progreso = 6
+no_dup$CODIGO_DEPARTAMENTO <- gsub("EL PROGRESO", 6, no_dup$CODIGO_DEPARTAMENTO)
+# Escuintla = 7
+no_dup$CODIGO_DEPARTAMENTO <- gsub("ESCUINTLA", 7, no_dup$CODIGO_DEPARTAMENTO)
+# Guatemala = 8
+no_dup$CODIGO_DEPARTAMENTO <- gsub("GUATEMALA", 8, no_dup$CODIGO_DEPARTAMENTO)
+# Huehuetenango = 9
+no_dup$CODIGO_DEPARTAMENTO <- gsub("HUEHUETENANGO", 9, no_dup$CODIGO_DEPARTAMENTO)
+# Izabal = 10
+no_dup$CODIGO_DEPARTAMENTO <- gsub("IZABAL", 10, no_dup$CODIGO_DEPARTAMENTO)
+# Jalapa = 11
+no_dup$CODIGO_DEPARTAMENTO <- gsub("JALAPA", 11, no_dup$CODIGO_DEPARTAMENTO)
+# Jutiapa = 12
+no_dup$CODIGO_DEPARTAMENTO <- gsub("JUTIAPA", 12, no_dup$CODIGO_DEPARTAMENTO)
+# Peten = 13
+no_dup$CODIGO_DEPARTAMENTO <- gsub("PETEN", 13, no_dup$CODIGO_DEPARTAMENTO)
+# Quetzaltenango = 14
+no_dup$CODIGO_DEPARTAMENTO <- gsub("QUETZALTENANGO", 14, no_dup$CODIGO_DEPARTAMENTO)
+# Quiche = 15
+no_dup$CODIGO_DEPARTAMENTO <- gsub("QUICHE", 15, no_dup$CODIGO_DEPARTAMENTO)
+# Retaluleu = 16
+no_dup$CODIGO_DEPARTAMENTO <- gsub("RETALULEU", 16, no_dup$CODIGO_DEPARTAMENTO)
+# Sacatepequez = 17
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SACATEPEQUEZ", 17, no_dup$CODIGO_DEPARTAMENTO)
+# San Marcos = 18
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SAN MARCOS", 18, no_dup$CODIGO_DEPARTAMENTO)
+# Santa Rosa = 19
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SANTA ROSA", 19, no_dup$CODIGO_DEPARTAMENTO)
+# Solola = 20
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SOLOLA", 20, no_dup$CODIGO_DEPARTAMENTO)
+# Suchitepequez = 21
+no_dup$CODIGO_DEPARTAMENTO <- gsub("SUCHITEPEQUEZ", 21, no_dup$CODIGO_DEPARTAMENTO)
+# Totonicapan = 22
+no_dup$CODIGO_DEPARTAMENTO <- gsub("TOTONICAPAN", 22, no_dup$CODIGO_DEPARTAMENTO)
+# Zacapa = 23
+no_dup$CODIGO_DEPARTAMENTO <- gsub("ZACAPA", 23, no_dup$CODIGO_DEPARTAMENTO)
