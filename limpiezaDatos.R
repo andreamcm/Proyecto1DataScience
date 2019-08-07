@@ -4,6 +4,9 @@ library(reshape)
 install.packages("dplyr")
 library(dplyr)
 
+install.packages("stringr")
+library(strinr)
+
 setwd("C:/Users/user/Documents/2019/UVG/Segundo Semestre/DataScience/Proyectos/Proyecto1/Proyecto1DataScience/DatosCrudos")
 wd <- "C:/Users/user/Documents/2019/UVG/Segundo Semestre/DataScience/Proyectos/Proyecto1/Proyecto1DataScience/DatosCrudos"
 temp = list.files(pattern="*.csv")
@@ -222,3 +225,4 @@ no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "#", "")
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, '[""]', '')
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, '[""]', '')
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "?", "")
+
