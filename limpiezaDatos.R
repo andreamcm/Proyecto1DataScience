@@ -63,7 +63,7 @@ identical(names(altaverapaz), names(bajaverapaz))
 # Union de todos los departamentos
 todosDepartamentos <- rbind(altaverapaz, bajaverapaz, chimaltenango, chiquimula, ciudadcapital, elprogreso, escuintla, guatemala, huehuetenango, izabal, jalapa, jutiapa, peten, quetzaltenango, quiche, retalhuleu, sacatepequez, sanmarcos, santarosa, solola, suchitepequez, totonicapan, zacapa)
 
-# EliminaciÃ³n de duplicados
+# EliminaciÃƒÂ³n de duplicados
 options(max.print= 1000000000)
 unique(todosDepartamentos)
 
@@ -84,18 +84,207 @@ no_dup$TELEFONO[nchar(as.character(no_dup$TELEFONO))>8 & !is.na(no_dup$TELEFONO)
 no_dup$STATUS <- gsub("ABIERTA", 1, no_dup$STATUS)
 no_dup$STATUS <- gsub("CERRADA TEMPORALMENTE", 0, no_dup$STATUS)
 
+#Estandar para vacÃ­o
+no_dup$CODIGO <- as.character(no_dup$CODIGO)
+no_dup$DISTRITO <- as.character(no_dup$DISTRITO)
+no_dup$DEPARTAMENTO <- as.character(no_dup$DEPARTAMENTO)
+no_dup$MUNICIPIO <- as.character(no_dup$MUNICIPIO)
+no_dup$ESTABLECIMIENTO <- as.character(no_dup$ESTABLECIMIENTO)
+no_dup$DIRECCION <- as.character(no_dup$DIRECCION)
+no_dup$TELEFONO <- as.character(no_dup$TELEFONO)
+no_dup$SUPERVISOR <- as.character(no_dup$SUPERVISOR)
+no_dup$DIRECTOR <- as.character(no_dup$DIRECTOR)
+no_dup$NIVEL <- as.character(no_dup$NIVEL)
+no_dup$SECTOR <- as.character(no_dup$SECTOR)
+no_dup$AREA <- as.character(no_dup$AREA)
+no_dup$STATUS <- as.character(no_dup$STATUS)
+no_dup$MODALIDAD <- as.character(no_dup$MODALIDAD)
+no_dup$JORNADA <- as.character(no_dup$JORNADA)
+no_dup$PLAN <- as.character(no_dup$PLAN)
+no_dup$DEPARTAMENTAL <- as.character(no_dup$DEPARTAMENTAL)
 
-# Estandar para todas las categorias con datos ""
-prueba <- no_dup
-no_dup$DISTRITO[no_dup$DISTRITO==""] <- NA
-no_dup$DIRECCION[no_dup$DIRECCION==""] <- NA
-no_dup$SUPERVISOR[no_dup$SUPERVISOR==""] <- NA
-# Todo lo del DIRECTOR (es un montón)
-no_dup$DIRECTOR[no_dup$DIRECTOR==""] <- NA
-no_dup$DIRECTOR[no_dup$DIRECTOR=="0"] <- NA
-no_dup$DIRECTOR[no_dup$DIRECTOR=="-"] <- NA
+#Cambio en CODIGO
+no_dup$CODIGO[no_dup$CODIGO == ""] <- NA
+no_dup$CODIGO[no_dup$CODIGO == "-"] <- NA
+no_dup$CODIGO[no_dup$CODIGO == "--"] <- NA
+no_dup$CODIGO[no_dup$CODIGO == "0"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="---"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="-----"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="----"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="----------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="-----------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="-----------------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="---------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="--------------------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="--------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="-------------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="-------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="-------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="--------------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="---------------------"] <- NA
+no_dup$CODIGO[no_dup$CODIGO=="-----------------------------"] <- NA
+
+#Cambio en DISTRITO
+no_dup$DISTRITO[no_dup$DISTRITO == ""] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO == "-"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO == "--"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO == "0"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="---"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="-----"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="----"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="----------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="-----------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="-----------------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="---------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="--------------------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="--------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="-------------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="-------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="-------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="--------------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="---------------------"] <- NA
+no_dup$DISTRITO[no_dup$DISTRITO=="-----------------------------"] <- NA
+
+#Cambio en DEPARTAMENTO
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO == ""] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO == "-"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO == "--"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO == "0"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="---"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="-----"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="----"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="----------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="-----------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="-----------------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="---------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="--------------------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="--------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="-------------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="-------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="-------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="--------------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="---------------------"] <- NA
+no_dup$DEPARTAMENTO[no_dup$DEPARTAMENTO=="-----------------------------"] <- NA
+
+#Cambio en MUNICIPIO
+no_dup$MUNICIPIO[no_dup$MUNICIPIO == ""] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO == "-"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO == "--"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO == "0"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="---"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="-----"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="----"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="----------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="-----------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="-----------------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="---------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="--------------------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="--------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="-------------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="-------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="-------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="--------------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="---------------------"] <- NA
+no_dup$MUNICIPIO[no_dup$MUNICIPIO=="-----------------------------"] <- NA
+
+#Cambio en ESTABLECIMIENTO
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO == ""] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO == "-"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO == "--"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO == "0"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="---"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="-----"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="----"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="----------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="-----------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="-----------------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="---------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="--------------------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="--------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="-------------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="-------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="-------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="--------------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="---------------------"] <- NA
+no_dup$ESTABLECIMIENTO[no_dup$ESTABLECIMIENTO=="-----------------------------"] <- NA
+
+#Cambio en DIRECCION
+no_dup$DIRECCION[no_dup$DIRECCION == ""] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION == "-"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION == "--"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION == "0"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="---"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="-----"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="----"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="----------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="-----------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="-----------------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="---------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="--------------------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="--------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="-------------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="-------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="-------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="--------------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="---------------------"] <- NA
+no_dup$DIRECCION[no_dup$DIRECCION=="-----------------------------"] <- NA
+
+#Cambio en TELEFONO
+no_dup$TELEFONO[no_dup$TELEFONO == ""] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO == "-"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO == "--"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO == "0"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="---"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="-----"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="----"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="----------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="-----------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="-----------------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="---------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="--------------------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="--------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="-------------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="-------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="-------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="--------------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="---------------------"] <- NA
+no_dup$TELEFONO[no_dup$TELEFONO=="-----------------------------"] <- NA
+
+#Cambio en SUPERVISOR
+no_dup$SUPERVISOR[no_dup$SUPERVISOR == ""] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR == "-"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR == "--"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR == "0"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="---"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="-----"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="----"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="----------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="-----------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="-----------------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="---------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="--------------------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="--------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="-------------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="-------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="-------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="--------------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="---------------------"] <- NA
+no_dup$SUPERVISOR[no_dup$SUPERVISOR=="-----------------------------"] <- NA
+
+#Cambio en DIRECTOR
+no_dup$DIRECTOR[no_dup$DIRECTOR == ""] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR == "-"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR == "--"] <- NA
+no_dup$DIRECTOR[no_dup$DIRECTOR == "0"] <- NA
 no_dup$DIRECTOR[no_dup$DIRECTOR=="---"] <- NA
-no_dup$DIRECTOR[no_dup$DIRECTOR=="--"] <- NA
 no_dup$DIRECTOR[no_dup$DIRECTOR=="-----"] <- NA
 no_dup$DIRECTOR[no_dup$DIRECTOR=="------"] <- NA
 no_dup$DIRECTOR[no_dup$DIRECTOR=="----"] <- NA
@@ -112,14 +301,190 @@ no_dup$DIRECTOR[no_dup$DIRECTOR=="--------------"] <- NA
 no_dup$DIRECTOR[no_dup$DIRECTOR=="---------------------"] <- NA
 no_dup$DIRECTOR[no_dup$DIRECTOR=="-----------------------------"] <- NA
 
-# Con este código se puede verificar si existen más datos raros dentro de las variables
+#Cambio en NIVEL
+no_dup$NIVEL[no_dup$NIVEL == ""] <- NA
+no_dup$NIVEL[no_dup$NIVEL == "-"] <- NA
+no_dup$NIVEL[no_dup$NIVEL == "--"] <- NA
+no_dup$NIVEL[no_dup$NIVEL == "0"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="---"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="-----"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="----"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="----------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="-----------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="-----------------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="---------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="--------------------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="--------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="-------------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="-------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="-------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="--------------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="---------------------"] <- NA
+no_dup$NIVEL[no_dup$NIVEL=="-----------------------------"] <- NA
+
+#Cambio en SECTOR
+no_dup$SECTOR[no_dup$SECTOR == ""] <- NA
+no_dup$SECTOR[no_dup$SECTOR == "-"] <- NA
+no_dup$SECTOR[no_dup$SECTOR == "--"] <- NA
+no_dup$SECTOR[no_dup$SECTOR == "0"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="---"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="-----"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="----"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="----------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="-----------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="-----------------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="---------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="--------------------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="--------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="-------------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="-------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="-------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="--------------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="---------------------"] <- NA
+no_dup$SECTOR[no_dup$SECTOR=="-----------------------------"] <- NA
+
+#Cambio en AREA
+no_dup$AREA[no_dup$AREA == ""] <- NA
+no_dup$AREA[no_dup$AREA == "-"] <- NA
+no_dup$AREA[no_dup$AREA == "--"] <- NA
+no_dup$AREA[no_dup$AREA == "0"] <- NA
+no_dup$AREA[no_dup$AREA=="---"] <- NA
+no_dup$AREA[no_dup$AREA=="-----"] <- NA
+no_dup$AREA[no_dup$AREA=="------"] <- NA
+no_dup$AREA[no_dup$AREA=="----"] <- NA
+no_dup$AREA[no_dup$AREA=="----------"] <- NA
+no_dup$AREA[no_dup$AREA=="-----------"] <- NA
+no_dup$AREA[no_dup$AREA=="-----------------"] <- NA
+no_dup$AREA[no_dup$AREA=="---------"] <- NA
+no_dup$AREA[no_dup$AREA=="--------------------"] <- NA
+no_dup$AREA[no_dup$AREA=="--------"] <- NA
+no_dup$AREA[no_dup$AREA=="-------------"] <- NA
+no_dup$AREA[no_dup$AREA=="-------"] <- NA
+no_dup$AREA[no_dup$AREA=="-------"] <- NA
+no_dup$AREA[no_dup$AREA=="--------------"] <- NA
+no_dup$AREA[no_dup$AREA=="---------------------"] <- NA
+no_dup$AREA[no_dup$AREA=="-----------------------------"] <- NA
+
+#Cambio en STATUS
+no_dup$STATUS[no_dup$STATUS == ""] <- NA
+no_dup$STATUS[no_dup$STATUS == "-"] <- NA
+no_dup$STATUS[no_dup$STATUS == "--"] <- NA
+no_dup$STATUS[no_dup$STATUS == "0"] <- NA
+no_dup$STATUS[no_dup$STATUS=="---"] <- NA
+no_dup$STATUS[no_dup$STATUS=="-----"] <- NA
+no_dup$STATUS[no_dup$STATUS=="------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="----"] <- NA
+no_dup$STATUS[no_dup$STATUS=="----------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="-----------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="-----------------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="---------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="--------------------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="--------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="-------------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="-------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="-------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="--------------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="---------------------"] <- NA
+no_dup$STATUS[no_dup$STATUS=="-----------------------------"] <- NA
+
+#Cambio en MODALIDAD
+no_dup$MODALIDAD[no_dup$MODALIDAD == ""] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD == "-"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD == "--"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD == "0"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="---"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="-----"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="----"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="----------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="-----------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="-----------------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="---------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="--------------------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="--------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="-------------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="-------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="-------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="--------------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="---------------------"] <- NA
+no_dup$MODALIDAD[no_dup$MODALIDAD=="-----------------------------"] <- NA
+
+#Cambio en JORNADA
+no_dup$JORNADA[no_dup$JORNADA == ""] <- NA
+no_dup$JORNADA[no_dup$JORNADA == "-"] <- NA
+no_dup$JORNADA[no_dup$JORNADA == "--"] <- NA
+no_dup$JORNADA[no_dup$JORNADA == "0"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="---"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="-----"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="----"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="----------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="-----------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="-----------------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="---------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="--------------------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="--------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="-------------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="-------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="-------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="--------------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="---------------------"] <- NA
+no_dup$JORNADA[no_dup$JORNADA=="-----------------------------"] <- NA
+
+#Cambio en PLAN
+no_dup$PLAN[no_dup$PLAN == ""] <- NA
+no_dup$PLAN[no_dup$PLAN == "-"] <- NA
+no_dup$PLAN[no_dup$PLAN == "--"] <- NA
+no_dup$PLAN[no_dup$PLAN == "0"] <- NA
+no_dup$PLAN[no_dup$PLAN=="---"] <- NA
+no_dup$PLAN[no_dup$PLAN=="-----"] <- NA
+no_dup$PLAN[no_dup$PLAN=="------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="----"] <- NA
+no_dup$PLAN[no_dup$PLAN=="----------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="-----------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="-----------------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="---------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="--------------------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="--------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="-------------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="-------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="-------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="--------------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="---------------------"] <- NA
+no_dup$PLAN[no_dup$PLAN=="-----------------------------"] <- NA
+
+#Cambio en DEPARTAMENTAL
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL == ""] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL == "-"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL == "--"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL == "0"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="---"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="-----"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="----"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="----------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="-----------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="-----------------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="---------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="--------------------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="--------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="-------------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="-------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="-------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="--------------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="---------------------"] <- NA
+no_dup$DEPARTAMENTAL[no_dup$DEPARTAMENTAL=="-----------------------------"] <- NA
+
+# Con este cÃ³digo se puede verificar si existen mÃ¡s datos raros dentro de las variables
 summary(no_dup$STATUS)
 grep("DIARIO", no_dup$PLAN, value = TRUE)
 
 # Nueva columna para numero de departamento
 temp
 no_dup$CODIGO_DEPARTAMENTO <- 0
-# No sé si se tiene que correr antes, pero mejor hacerlo para que funcione bien
+# No sÃ© si se tiene que correr antes, pero mejor hacerlo para que funcione bien
 no_dup$CODIGO_DEPARTAMENTO <- gsub("ALTA VERAPAZ", 1, no_dup$DEPARTAMENTO)
 no_dup$CODIGO_DEPARTAMENTO <- gsub("BAJA VERAPAZ", 2, no_dup$DEPARTAMENTO)
 no_dup$CODIGO_DEPARTAMENTO <- gsub("CHIMALTENANGO", 3, no_dup$DEPARTAMENTO)
@@ -192,27 +557,27 @@ no_dup$CODIGO_DEPARTAMENTO <- gsub("TOTONICAPAN", 22, no_dup$CODIGO_DEPARTAMENTO
 # Zacapa = 23
 no_dup$CODIGO_DEPARTAMENTO <- gsub("ZACAPA", 23, no_dup$CODIGO_DEPARTAMENTO)
 
-# Eliminación de caracteres especiales
+# EliminaciÃ³n de caracteres especiales
 
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[|/td>]", "")
 no_dup$DIRECTOR <- str_replace(no_dup$DIRECTOR, "[|/td>]", "")
-no_dup$DEPARTAMENTAL <- str_replace(no_dup$DEPARTAMENTAL, "[¼]", "")
+no_dup$DEPARTAMENTAL <- str_replace(no_dup$DEPARTAMENTAL, "[Â¼]", "")
 no_dup$DEPARTAMENTAL <- str_replace(no_dup$DEPARTAMENTAL, "[t]", "")
 no_dup$DEPARTAMENTAL <- str_replace(no_dup$DEPARTAMENTAL, "[d]", "")
 no_dup$DEPARTAMENTAL <- str_replace(no_dup$DEPARTAMENTAL, "[/]", "")
 no_dup$DEPARTAMENTAL <- str_replace(no_dup$DEPARTAMENTAL, "[>]", "")
-no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "[¼]", "")
+no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "[Â¼]", "")
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "[t]", "")
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "[d]", "")
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "[/]", "")
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "[>]", "")
-no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[¼]", "")
+no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[Â¼]", "")
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[t]", "")
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[d]", "")
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[/]", "")
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[>]", "")
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "[;]", "")
-no_dup$DIRECTOR <- str_replace(no_dup$DIRECTOR, "[¼]", "")
+no_dup$DIRECTOR <- str_replace(no_dup$DIRECTOR, "[Â¼]", "")
 no_dup$DIRECTOR <- str_replace(no_dup$DIRECTOR, "[t]", "")
 no_dup$DIRECTOR <- str_replace(no_dup$DIRECTOR, "[d]", "")
 no_dup$DIRECTOR <- str_replace(no_dup$DIRECTOR, "[/]", "")
