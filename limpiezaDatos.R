@@ -69,13 +69,11 @@ no_dup <-todosDepartamentos %>% distinct()
 names(no_dup) <- as.matrix(no_dup[1, ])
 no_dup <- no_dup[-1, ]
 no_dup[] <- lapply(no_dup, function(x) type.convert(as.character(x)))
-no_dup
-
                    
 # Estandar para telefonos
 
-todosDepartamentos$TELEFONO <- as.character(todosDepartamentos$TELEFONO)
-todosDepartamentos$TELEFONO[nchar(as.character(todosDepartamentos$TELEFONO))<8 & !is.na(todosDepartamentos$TELEFONO)] <- NA
-todosDepartamentos$TELEFONO[nchar(as.character(todosDepartamentos$TELEFONO))>8 & !is.na(todosDepartamentos$TELEFONO)] <- substr(todosDepartamentos$TELEFONO, 1, 8)
+no_dup$TELEFONO <- as.character(no_dup$TELEFONO)
+no_dup$TELEFONO[nchar(as.character(no_dup$TELEFONO))<8 & !is.na(no_dup$TELEFONO)] <- NA
+no_dup$TELEFONO[nchar(as.character(no_dup$TELEFONO))>8 & !is.na(no_dup$TELEFONO)] <- substr(no_dup$TELEFONO, 1, 8)
 
                    
