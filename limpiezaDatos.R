@@ -593,3 +593,5 @@ no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, '[""]', '')
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, '[""]', '')
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "?", "")
 
+View(no_dup)
+write.csv(no_dup,'datos.csv')
