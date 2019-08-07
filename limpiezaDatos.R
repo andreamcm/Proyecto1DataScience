@@ -5,7 +5,7 @@ install.packages("dplyr")
 library(dplyr)
 
 install.packages("stringr")
-library(strinr)
+library(stringr)
 
 setwd("C:/Users/user/Documents/2019/UVG/Segundo Semestre/DataScience/Proyectos/Proyecto1/Proyecto1DataScience/DatosCrudos")
 wd <- "C:/Users/user/Documents/2019/UVG/Segundo Semestre/DataScience/Proyectos/Proyecto1/Proyecto1DataScience/DatosCrudos"
