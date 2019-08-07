@@ -60,7 +60,7 @@ identical(names(altaverapaz), names(bajaverapaz))
 # Union de todos los departamentos
 todosDepartamentos <- rbind(altaverapaz, bajaverapaz, chimaltenango, chiquimula, ciudadcapital, elprogreso, escuintla, guatemala, huehuetenango, izabal, jalapa, jutiapa, peten, quetzaltenango, quiche, retalhuleu, sacatepequez, sanmarcos, santarosa, solola, suchitepequez, totonicapan, zacapa)
 
-# Eliminación de duplicados
+# EliminaciÃ³n de duplicados
 options(max.print= 1000000000)
 unique(todosDepartamentos)
 
@@ -70,3 +70,12 @@ names(no_dup) <- as.matrix(no_dup[1, ])
 no_dup <- no_dup[-1, ]
 no_dup[] <- lapply(no_dup, function(x) type.convert(as.character(x)))
 no_dup
+
+                   
+# Estandar para telefonos
+
+todosDepartamentos$TELEFONO <- as.character(todosDepartamentos$TELEFONO)
+todosDepartamentos$TELEFONO[nchar(as.character(todosDepartamentos$TELEFONO))<8 & !is.na(todosDepartamentos$TELEFONO)] <- NA
+todosDepartamentos$TELEFONO[nchar(as.character(todosDepartamentos$TELEFONO))>8 & !is.na(todosDepartamentos$TELEFONO)] <- substr(todosDepartamentos$TELEFONO, 1, 8)
+
+                   
