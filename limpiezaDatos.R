@@ -69,6 +69,7 @@ no_dup <-todosDepartamentos %>% distinct()
 names(no_dup) <- as.matrix(no_dup[1, ])
 no_dup <- no_dup[-1, ]
 no_dup[] <- lapply(no_dup, function(x) type.convert(as.character(x)))
+no_dup <- no_dup[!(is.na(no_dup$ESTABLECIMIENTO) | no_dup$ESTABLECIMIENTO==""), ]
                    
 # Estandar para telefonos
 
@@ -76,4 +77,6 @@ no_dup$TELEFONO <- as.character(no_dup$TELEFONO)
 no_dup$TELEFONO[nchar(as.character(no_dup$TELEFONO))<8 & !is.na(no_dup$TELEFONO)] <- NA
 no_dup$TELEFONO[nchar(as.character(no_dup$TELEFONO))>8 & !is.na(no_dup$TELEFONO)] <- substr(no_dup$TELEFONO, 1, 8)
 
-                   
+#Status -> abierta = 1, temporalmente cerrado = 0    
+no_dup$STATUS <- gsub("ABIERTA", 1, no_dup$STATUS)
+no_dup$STATUS <- gsub("CERRADA TEMPORALMENTE", 0, no_dup$STATUS)
