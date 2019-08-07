@@ -588,6 +588,8 @@ no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "/", "")
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "/", "")
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, "#", "")
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, '[""]', '')
+no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, '[""]', '')
+no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, '[""]', '')
 no_dup$DIRECCION <- str_replace(no_dup$DIRECCION, '[""]', '')
 no_dup$ESTABLECIMIENTO <- str_replace(no_dup$ESTABLECIMIENTO, "?", "")
 
